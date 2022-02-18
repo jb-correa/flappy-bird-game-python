@@ -5,7 +5,7 @@ import random
 #Starting game comands
 pygame.mixer.pre_init(frequency = 44100, size = 32, channels = 1, buffer = 512)
 pygame.init()
-gravity = 0.35
+gravity = 0.01
 bird_movement = 0
 display_width = 285
 display_height = 510
@@ -71,7 +71,7 @@ def collusion(pipes):
     for pipe in pipes:
         if bird_rectangle.colliderect(pipe):
             lose_sound.play()
-            die_sound.play()
+            die_sound
             return False
 
     if bird_rectangle.top <= -25 or bird_rectangle.bottom >= 435:
@@ -110,9 +110,9 @@ while True:
     
     for event in pygame.event.get():
         if event.type == QUIT or (
-            event.type == KEYDOWN and (
-            event.key == K_ESCAPE or
-            event.key == K_q)):
+            event.type == pygame.KEYDOWN and (
+            event.key == pygame.K_ESCAPE or
+            event.key == pygame.K_q)):
             pygame.quit()
             quit()
         elif event.type == pygame.KEYDOWN and game_on == True:
@@ -141,7 +141,7 @@ while True:
             pipes_list2.extend(adding_pipes())
         
  
-    speed.tick(65) 
+    speed.tick(40) 
     game_display.blit(background,(0,0))
 
     if game_on:    
